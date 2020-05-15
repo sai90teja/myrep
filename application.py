@@ -2,13 +2,13 @@ from flask import Flask, render_template, request, url_for, redirect
 import requests
 from bs4 import BeautifulSoup
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 usr = ''
 pwd = ''
 
 
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         global usr
@@ -97,7 +97,7 @@ def request_attendance():
     return render_template('content.html', all_content=all_content)
 
 
-app.add_url_rule('/attendance', 'request_attendance', request_attendance)
+application.add_url_rule('/attendance', 'request_attendance', request_attendance)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run()
